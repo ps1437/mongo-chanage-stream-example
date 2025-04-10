@@ -76,3 +76,31 @@ db.createCollection("orders_stream", {
 | **Ease of Use**               | Simple, low-level                             | Higher-level, more powerful                    |
 | **Language Support**          | Available in most drivers                     | Fully supported in official drivers            |
 
+---
+# 📦 MongoDB Event Listener with Spring Data
+
+This module demonstrates how to listen to **MongoDB entity lifecycle events** such as `onBeforeSave`, `onAfterSave`, etc., using **Spring Data MongoDB**.
+## 🔔 Lifecycle Event Triggering in Spring Data MongoDB
+
+### ✅ Triggered For:
+These MongoDB lifecycle events **will be triggered** when using the following:
+
+- `MongoRepository.save(...)`
+- `MongoTemplate.save(...)`
+
+---
+
+### ❌ Not Triggered For:
+The following operations **will NOT trigger** lifecycle events like `onBeforeSave` or `onAfterSave`:
+
+- `mongoTemplate.updateFirst(...)`
+- `mongoTemplate.updateMulti(...)`
+- Native MongoDB queries (e.g., using `collection.updateOne()` or raw driver operations)
+
+---
+
+### ℹ️ Note:
+If you need to track changes from update operations or deletes, consider using:
+
+- [MongoDB Change Streams](https://www.mongodb.com/docs/manual/changeStreams/)
+- Custom interceptors or auditing logic
