@@ -5,24 +5,19 @@ spring:
   application:
     name: ecommerce-service
 
+#  data:
+#    mongodb:
+#      uri: mongodb+srv://praveen369soni:WuVutv9qSVSV6DI4@cluster0.jumqikj.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0
+#      database: ecommerce
+
   data:
     mongodb:
-      uri: mongodb+srv://praveen369soni:WuVutv9qSVSV6DI4@cluster0.jumqikj.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0
-      database: ecommerce
+      uri: mongodb://localhost:27017/ecommerce
 
-logging:
-  level:
-    root: INFO
-    org.springframework.web: DEBUG
-    com.syscho.mongo: DEBUG
-  pattern:
-    console: "%d{HH:mm:ss} %-5level %logger{36} - %msg%n"
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:29092
+      group-id: mongo-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest
