@@ -43,3 +43,36 @@ This application helps by **listening to changes** in a MongoDB `orders` collect
 [ChangeEventHandler implementation]
          ↓
 [AuditService / Logger / Action]
+```
+
+---
+
+# 📦 How to Create a Capped Collection in MongoDB
+
+## ✅ Create a Capped Collection
+
+```javascript
+db.createCollection("orders_stream", {
+  capped: true,
+  size: 1048576  // 1MB or whatever you need
+});
+
+```
+
+# 🌀 Tailable Cursors vs 🔄 Change Streams in MongoDB
+
+| Feature                        | 🌀 **Tailable Cursors**                         | 🔄 **Change Streams**                          |
+|-------------------------------|-----------------------------------------------|------------------------------------------------|
+| **MongoDB Version**           | Available in older versions                   | Requires MongoDB **3.6+**                      |
+| **Collection Type**           | **Capped collections** only                   | Works on **any collection**                    |
+| **Data Tracked**              | **Inserts only**                              | **Inserts, updates, deletes, replacements**    |
+| **Update/Delete Support**     | ❌ No                                          | ✅ Yes                                          |
+| **Filtering Support**         | ❌ Limited                                     | ✅ Full support via aggregation pipeline        |
+| **Resume After Disconnect**   | ❌ Manual requery logic needed                 | ✅ Resume with **resume token**                |
+| **Replica Set Required**      | ❌ No                                          | ✅ Yes (even single-node replica set works)     |
+| **Cross-Collection Watch**    | ❌ No                                          | ✅ Yes (watch DB or whole cluster)             |
+| **Use Case**                  | Log tailing, streaming inserts                | Microservices, triggers, real-time sync        |
+| **Performance**               | Lightweight                                   | Slightly heavier due to oplog inspection       |
+| **Ease of Use**               | Simple, low-level                             | Higher-level, more powerful                    |
+| **Language Support**          | Available in most drivers                     | Fully supported in official drivers            |
+
