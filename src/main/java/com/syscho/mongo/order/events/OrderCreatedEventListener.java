@@ -1,9 +1,7 @@
 package com.syscho.mongo.order.events;
 
 import com.syscho.mongo.order.Order;
-import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
-import org.springframework.data.mongodb.core.mapping.event.AfterSaveEvent;
-import org.springframework.data.mongodb.core.mapping.event.BeforeSaveEvent;
+import org.springframework.data.mongodb.core.mapping.event.*;
 import org.springframework.stereotype.Component;
 
 //
@@ -22,6 +20,32 @@ public class OrderCreatedEventListener extends AbstractMongoEventListener<Order>
     @Override
     public void onAfterSave(AfterSaveEvent<Order> event) {
         System.out.println("Order is saved in DB");
-        System.out.println(event.getDocument());
     }
+
+    @Override
+    public void onBeforeDelete(BeforeDeleteEvent<Order> event) {
+        System.out.println("Order is going to DELETED from DB");
+    }
+
+    @Override
+    public void onAfterDelete(AfterDeleteEvent<Order> event) {
+        System.out.println("Order is  DELETED from DB");
+    }
+
+    @Override
+    public void onAfterConvert(AfterConvertEvent<Order> event) {
+        System.out.println(" onAfterConvert");
+    }
+
+    @Override
+    public void onAfterLoad(AfterLoadEvent<Order> event) {
+        System.out.println(" onAfterLoad");
+    }
+
+    @Override
+    public void onBeforeConvert(BeforeConvertEvent<Order> event) {
+        System.out.println(" onBeforeConvert");
+    }
+
+
 }

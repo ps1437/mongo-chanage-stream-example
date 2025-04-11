@@ -104,3 +104,20 @@ If you need to track changes from update operations or deletes, consider using:
 
 - [MongoDB Change Streams](https://www.mongodb.com/docs/manual/changeStreams/)
 - Custom interceptors or auditing logic
+
+---
+## Useful Links
+
+https://medium.com/mongodb-tutorial/introduction-to-mongodb-and-nosql-databases-ec0ab1097e7c
+
+https://www.mongodb.com/docs/manual/changeStreams/
+
+https://www.vinsguru.com/mongodb-change-streams-reactive-spring-data/
+
+https://www.slingacademy.com/article/working-with-change-streams-in-mongodb-with-examples/
+
+https://www.mongodb.com/docs/manual/core/tailable-cursors/
+
+https://github.com/spring-projects/spring-data-examples/blob/main/mongodb/change-streams/README.md
+
+https://gist.github.com/marantz/fbc1caea5a449e44b70083a597732bb2
