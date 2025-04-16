@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 //mongoTemplate.save(...)
 //
 //repository.save(...)
-@Component
+//@Component
 public class OrderCreatedEventListener extends AbstractMongoEventListener<Order> {
 
     @Override

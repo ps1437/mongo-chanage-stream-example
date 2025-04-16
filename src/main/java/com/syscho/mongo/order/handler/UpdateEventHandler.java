@@ -19,6 +19,7 @@ public class UpdateEventHandler implements ChangeEventHandler {
 
     @Override
     public void handle(ChangeStreamDocument<Document> change) {
+        System.out.println("Updated to Audit table");
         BsonDocument documentKey = change.getDocumentKey();
         Object id = documentKey != null ? documentKey.get("_id") : null;
 

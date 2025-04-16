@@ -10,6 +10,16 @@ spring:
       uri: mongodb+srv://praveen369soni:WuVutv9qSVSV6DI4@cluster0.jumqikj.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0
       database: ecommerce
 
+  cache:
+    type: hazelcast
+  hazelcast:
+    config: classpath:hazelcast.xml
+
+hazelcast:
+  network:
+    rest-api:
+      enabled: true
+
 logging:
   level:
     root: INFO

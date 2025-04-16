@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.hazelcast.com/schema/config
+                               http://www.hazelcast.com/schema/config/hazelcast-config-4.2.xsd">
+
+    <!-- Network Configuration -->
+    <network>
+
+
+                <rest-api enabled="true"/>
+
+
+        <join>
+            <!-- TCP/IP configuration for node-to-node communication -->
+            <tcp-ip enabled="true">
+                <member>127.0.0.1:8080</member> <!-- Node 1 (first instance on port 8080) -->
+            </tcp-ip>
+        </join>
+
+        <!-- Port configuration to listen on different ports -->
+        <port auto-increment="false">5701</port> <!-- Default port for Hazelcast communication -->
+        <port-count>100</port-count> <!-- Allow up to 100 ports if needed -->
+    </network>
+
+    <!-- Hazelcast General Settings -->
+    <hazelcast>
+        <!-- Enable Management Center -->
+        <management-center enabled="true">
+            <url>http://localhost:8080/mancenter</url> <!-- Point to your management center URL -->
+        </management-center>
+
+        <!-- Example of a distributed map for storing resume tokens -->
+        <map name="resumeTokens">
+            <backup-count>1</backup-count>
+            <async-backup-count>0</async-backup-count>
+            <time-to-live-seconds>3600</time-to-live-seconds>
+        </map>
+
+        <!-- Additional map configurations can be added if needed -->
+    </hazelcast>
+</hazelcast>
